@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Вязание своими руками | Тепло ваших рук</title>
+    <!-- Шрифты Google Fonts для уютного стиля -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (бесплатные иконки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefaf5;   /* тёплый кремовый фон */
+            color: #3e2c23;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* типографика */
+        h1, h2, h3, .logo, .btn, .hero-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            letter-spacing: -0.01em;
+            border-left: 6px solid #d4b48c;
+            padding-left: 1.2rem;
+            margin-bottom: 2rem;
+            color: #4a3729;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* шапка */
+        .navbar {
+            background: #fffbf7;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #b47c5e;
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+        .logo i {
+            color: #c69c6d;
+            margin-right: 8px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #4a3729;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #b47c5e;
+            border-bottom: 2px solid #e2c7ae;
+        }
+
+        /* кнопки */
+        .btn {
+            display: inline-block;
+            background-color: #d9b48b;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .btn:hover {
+            background-color: #c29a6b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(180, 124, 94, 0.2);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #d9b48b;
+            color: #b47c5e;
+        }
+        .btn-outline:hover {
+            background: #d9b48b;
+            color: white;
+        }
+
+        /* hero секция */
+        .hero {
+            padding: 5rem 0 5rem;
+            background: linear-gradient(130deg, #fff3e8 0%, #fae9dc 100%);
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #382519;
+            margin-bottom: 1.2rem;
+        }
+        .hero-title span {
+            color: #bd8460;
+            border-bottom: 3px solid #e7c8ae;
+        }
+        .hero-desc {
+            font-size: 1.15rem;
+            margin: 1.5rem 0;
+            color: #5d4638;
+            max-width: 90%;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 40px 20px 40px 20px;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .hero-image img:hover {
+            transform: scale(1.01);
+        }
+
+        /* секция преимуществ / особенностей */
+        .features {
+            padding: 5rem 0;
+            background: #fff;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: #fef7f0;
+            border-radius: 32px;
+            transition: 0.2s;
+            border: 1px solid #f2e2d4;
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #bb8866;
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .feature-card p {
+            color: #6b4f3e;
+        }
+
+        /* галерея работ */
+        .gallery {
+            padding: 5rem 0;
+            background: #fcf6ef;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .gallery-item {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            background: #efdbcc;
+        }
+        .gallery-info {
+            padding: 1.2rem;
+        }
+        .gallery-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .gallery-info p {
+            color: #7a5a48;
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        /* уроки / статьи (сетка) */
+        .tutorials {
+            padding: 5rem 0;
+            background: #ffffff;
+        }
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .tutorial-card {
+            background: #fefaf5;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #f2e0d2;
+            transition: 0.2s;
+        }
+        .tutorial-card i {
+            font-size: 2.2rem;
+            background: #ebd7c8;
+            padding: 12px;
+            border-radius: 60px;
+            color: #a7704c;
+            margin-bottom: 1rem;
+        }
+        .tutorial-card h3 {
+            font-size: 1.4rem;
+            margin: 0.8rem 0 0.6rem;
+        }
+        .tutorial-card p {
+            color: #5e4434;
+            margin-bottom: 1.2rem;
+        }
+        .read-more {
+            font-weight: 600;
+            color: #bd8460;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* секция подписки */
+        .newsletter {
+            background: #e9dacf;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .newsletter h2 {
+            border-left: none;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: none;
+            font-size: 1rem;
+            background: white;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            border: 1px solid #ddd0c2;
+        }
+        .newsletter-form button {
+            border-radius: 60px;
+            padding: 14px 28px;
+            background: #b47c5e;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        /* footer */
+        footer {
+            background: #2e241f;
+            color: #e7cfbd;
+            padding: 3rem 0 2rem;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #f1dbc9;
+        }
+        .footer-col p, .footer-col a {
+            color: #cfb9a7;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        .social-links a {
+            display: inline-block;
+            margin-right: 1.2rem;
+            font-size: 1.3rem;
+            color: #d9bc9f;
+            transition: 0.2s;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #4a3529;
+            font-size: 0.85rem;
+            color: #b6937a;
+        }
+
+        /* адаптив */
+        @media (max-width: 850px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .hero-grid {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 550px) {
+            .container {
+                padding: 0 16px;
+            }
+            .btn {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="#" class="logo"><i class="fas fa-ball-of-yarn"></i> Wool&Hands</a>
+        <ul class="nav-links">
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#features">Преимущества</a></li>
+            <li><a href="#gallery">Работы</a></li>
+            <li><a href="#tutorials">Уроки</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero / Домашняя секция -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1 class="hero-title">Вязание <span>своими руками</span><br>тепло для души</h1>
+                <p class="hero-desc">Откройте мир уютных петель, авторских узоров и натуральной пряжи. Сотни идей для вдохновения, мастер-классы и тёплое комьюнити рукодельниц.</p>
+                <a href="#tutorials" class="btn">Начать вязать <i class="fas fa-arrow-right"></i></a>
+                <a href="#gallery" class="btn btn-outline" style="margin-left: 12px;">Смотреть работы</a>
+            </div>
+            <div class="hero-image">
+                <!-- иллюстративная картинка (svg-заглушка с вязанием, но можно заменить на реальную) -->
+                <img src="images/hero.jpg" alt="вязание">
+            </div>
+        </div>
+    </section>
+
+    <!-- Особенности / почему вязать с нами -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2><i class="fas fa-heart" style="margin-right: 10px; color:#c69c6d;"></i> Почему вязание — это стильно и полезно?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <h3>Терапия творчеством</h3>
+                    <p>Снимает стресс, развивает мелкую моторику и дарит состояние потока. Вяжите с удовольствием!</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Уникальный гардероб</h3>
+                    <p>Создавайте свитера, кардиганы, шарфы и аксессуары, которых больше ни у кого не будет.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Экологичность</h3>
+                    <p>Натуральная пряжа, ручная работа и осознанное потребление — вклад в планету.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <h3>Уроки для всех уровней</h3>
+                    <p>От набора петель до сложных аранов и жаккарда. Поддержка в чате и видеоуроки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея работ (примеры) -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2><i class="fas fa-camera-retro"></i> Вдохновляющие работы</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img class="gallery-img" src="images/Fluffy Merinos.jpg" alt="Свитер оверсайз">
+                    <div class="gallery-info">
+                        <h3>Свитер «Облако»</h3>
+                        <p>Мягкий меринос, узор «рис» — идеально для прохладных вечеров.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="images/Voluminous braids.jpg" alt="Снуд с косами">
+                    <div class="gallery-info">
+                        <h3>Снуд «Зимняя сказка»</h3>
+                        <p>Объёмные косы, цвет «пыльная роза», связан за один вечер.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="images/Norwegian patterns.jpg" alt="Норвежская шапочка">
+                    <div class="gallery-info">
+                        <h3>Норвежская шапочка</h3>
+                        <p>Норвежские узоры — уют в каждой детали интерьера.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="images/Baby.jpg" alt="Детская шапочка из Мериноса">
+                    <div class="gallery-info">
+                        <h3>Детская шапочка из Мериноса «Малышка»</h3>
+                        <p>Меринос + нежная вязка, подарок для самых маленьких.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn btn-outline">Смотреть все работы →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Уроки и мастер-классы -->
+    <section id="tutorials" class="tutorials">
+        <div class="container">
+            <h2><i class="fas fa-circle-info"></i> Бесплатные уроки вязания</h2>
+            <div class="tutorial-grid">
+                <div class="tutorial-card">
+                    <i class="fas fa-cotton-ball"></i>
+                    <h3>Как выбрать пряжу и спицы</h3>
+                    <p>Изучаем состав, толщину нити, подбираем инструмент для идеального результата без разочарований.</p>
+                    <a href="#" class="read-more">Читать <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="tutorial-card">
+                    <i class="fas fa-chart-simple"></i>
+                    <h3>Чтение схем и узоров</h3>
+                    <p>Научитесь понимать условные обозначения и вязать даже самые сложные аранские переплетения.</p>
+                    <a href="#" class="read-more">Смотреть урок <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="tutorial-card">
+                    <i class="fas fa-scarf"></i>
+                    <h3>Реглан сверху без швов</h3>
+                    <p>Мастер-класс по бесшовному вязанию свитера: расчёт петель, прибавки, идеальная посадка.</p>
+                    <a href="#" class="read-more">Подробнее <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="tutorial-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Жаккард для начинающих</h3>
+                    <p>Техника многоцветного вязания без протяжек — создавайте яркие орнаменты с лёгкостью.</p>
+                    <a href="#" class="read-more">Перейти к уроку <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Рассылка новостей -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>📬 Журнал «Петля за петлей»</h2>
+            <p style="font-size:1.1rem; max-width:600px; margin:0 auto;">Получайте еженедельные схемы, скидки на пряжу и анонсы новых мастер-классов.</p>
+            <form class="newsletter-form" id="subscribeForm">
+                <input type="email" placeholder="Ваш e-mail" required id="subEmail">
+                <button type="submit">Подписаться</button>
+            </form>
+            <small style="display:block; margin-top:0.7rem;">Никакого спама, только вязаное вдохновение ✨</small>
+        </div>
+    </section>
+
+    <!-- Контакты и соцсети -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4><i class="fas fa-ball-of-yarn"></i> Wool&Hands</h4>
+                    <p>Сообщество вязальщиц и мастеров ручного вязания. Делимся опытом, схемами и теплом.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <p><a href="#home">Главная</a><br><a href="#features">О нас</a><br><a href="#gallery">Портфолио</a><br><a href="#tutorials">Уроки</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-envelope"></i> matorina.1975@mail.ru</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (919) 692-95-01</p>
+                    <div class="social-links" style="margin-top: 12px;">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Вяжем вместе</h4>
+                    <p>Присоединяйтесь к прямому эфиру по пятницам. Задавайте вопросы в комментариях!</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Wool&Hands — вязание своими руками. Все права защищены. Создано с любовью к пряже.</p>
+            </div>
+        </div>
+    </footer>
+</main>
+
+<!-- небольшой интерактив: уведомление о подписке -->
+<script>
+    (function() {
+        const form = document.getElementById('subscribeForm');
+        if(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = document.getElementById('subEmail');
+                const email = emailInput.value.trim();
+                if(email && email.includes('@')) {
+                    alert(`✨ Спасибо, ${email}! Вы подписались на вязаные новости. Скоро придёт первый мастер-класс.`);
+                    emailInput.value = '';
+                } else {
+                    alert('Пожалуйста, введите корректный email 😊');
+                }
+            });
+        }
+
+        // плавный скролл для всех якорных ссылок
+        const allLinks = document.querySelectorAll('a[href^="#"]');
+        allLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href === "#" || href === "") return;
+                const targetElement = document.querySelector(href);
+                if(targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    })();
+</script>
+</body>
+</html>
