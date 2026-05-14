@@ -397,6 +397,86 @@
                 padding: 10px 20px;
             }
         }
+    /* ===== МОДАЛЬНЫЕ ОКНА ДЛЯ УРОКОВ ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: #fffef7;
+    max-width: 550px;
+    width: 90%;
+    padding: 2rem;
+    border-radius: 32px;
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+    font-family: 'Inter', sans-serif;
+    color: #3e2c23;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.modal-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #b47c5e;
+    margin-bottom: 0.5rem;
+}
+.modal-content h4 {
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #8b5a3e;
+    font-size: 1.1rem;
+}
+.modal-content ul, .modal-content p {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+.modal-content pre {
+    background: #f3ebe3;
+    padding: 0.8rem;
+    border-radius: 16px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+.modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.8rem 0;
+}
+.modal-content td, .modal-content th {
+    border: 1px solid #e2d4c8;
+    padding: 8px;
+    text-align: left;
+}
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #b47c5e;
+    transition: 0.2s;
+}
+.close-modal:hover {
+    color: #8b5a3e;
+    transform: scale(1.1);
+}
     </style>
 </head>
 <body>
@@ -613,6 +693,167 @@
             });
         });
     })();
+</script>
+<!-- ===== МОДАЛЬНЫЕ ОКНА ДЛЯ УРОКОВ ===== -->
+
+<!-- Урок 1: Как выбрать пряжу и спицы -->
+<div id="modalLesson1" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" data-modal="modalLesson1">&times;</span>
+        <h3>🧶 Как выбрать пряжу и спицы</h3>
+        <p>Правильный выбор — залог удовольствия от вязания и красивого результата.</p>
+        
+        <h4>📌 Состав пряжи</h4>
+        <ul>
+            <li><strong>Шерсть</strong> — тёплая, эластичная, для свитеров и шапок.</li>
+            <li><strong>Хлопок</strong> — дышащий, для летних вещей и игрушек.</li>
+            <li><strong>Акрил</strong> — бюджетный, мягкий, но хуже держит тепло.</li>
+            <li><strong>Смесовая</strong> — сочетает плюсы разных волокон (шерсть+акрил).</li>
+        </ul>
+        
+        <h4>📏 Толщина нити (метраж на 100 г)</h4>
+        <pre>
+Тонкая (400-600 м)   → спицы №1.5-2.5 → носки, ажур
+Средняя (250-350 м)  → спицы №3-4     → шапки, свитера, снуды
+Толстая (100-150 м)  → спицы №5-8     → пледы, пальто, крупная вязка</pre>
+        
+        <h4>💡 Совет для начинающих</h4>
+        <p>Начните со средней пряжи (300 м / 100 г) и спиц №4. Светлая пряжа лучше показывает узоры.</p>
+    </div>
+</div>
+
+<!-- Урок 2: Чтение схем и узоров -->
+<div id="modalLesson2" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" data-modal="modalLesson2">&times;</span>
+        <h3>📖 Чтение схем и узоров</h3>
+        <p>Научитесь понимать условные обозначения и вязать любые узоры.</p>
+        
+        <h4>🔣 Основные обозначения</h4>
+        <pre>
+○ — накид
+│ — лицевая петля
+• — изнаночная петля
+/ — две вместе лицевой с наклоном вправо
+\ — две вместе лицевой с наклоном влево
+∧ — три вместе лицевой</pre>
+        
+        <h4>📐 Как читать схему</h4>
+        <ul>
+            <li>Читайте схему <strong>снизу вверх</strong></li>
+            <li>Нечётные ряды (лицевые) — <strong>справа налево</strong></li>
+            <li>Чётные ряды (изнаночные) — <strong>слева направо</strong></li>
+            <li>Пустая клетка = лицевая петля</li>
+        </ul>
+        
+        <h4>📱 Полезные приложения</h4>
+        <p>KnitCompanion, My Row Counter — помогут отслеживать ряды по схемам.</p>
+    </div>
+</div>
+
+<!-- Урок 3: Реглан сверху без швов -->
+<div id="modalLesson3" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" data-modal="modalLesson3">&times;</span>
+        <h3>🧥 Реглан сверху без швов</h3>
+        <p>Идеальный метод для свитеров, кардиганов и джемперов.</p>
+        
+        <h4>📐 Формула расчёта петель</h4>
+        <pre>
+Окружность шеи × плотность вязания = общее количество петель
+
+Пример для 100 петель:
+Спинка — 30 п.
+Перед — 30 п.
+Рукава — по 15 п. (всего 30 п.)
+Линии реглана — по 2 п. (всего 8 п.)
+Итого: 30+30+30+8 = 98 п. (2 петли добавить для симметрии)</pre>
+        
+        <h4>📈 Линии реглана</h4>
+        <p>Делайте прибавки в каждом лицевом ряду: до и после линии реглана. Линия может быть из 1, 2 или 3 петель — чем толще, тем выразительнее.</p>
+        
+        <h4>✅ Плюсы метода</h4>
+        <ul>
+            <li>Нет швов — не натирает</li>
+            <li>Можно примерять в процессе</li>
+            <li>Легко удлинять и расширять</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Урок 4: Жаккард для начинающих -->
+<div id="modalLesson4" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" data-modal="modalLesson4">&times;</span>
+        <h3>🎨 Жаккард для начинающих</h3>
+        <p>Секреты многоцветного вязания без протяжек и стягивания.</p>
+        
+        <h4>🧵 Главные правила</h4>
+        <ul>
+            <li>Не делайте протяжки длиннее <strong>5 петель</strong></li>
+            <li>Переплетайте нити каждые 3-4 петли</li>
+            <li>Начинайте с 2-3 цветов</li>
+        </ul>
+        
+        <h4>📊 Простая схема для тренировки</h4>
+        <pre>
+Ряд 1:  A  B  A  B  A  B
+Ряд 2:  B  A  B  A  B  A
+Ряд 3:  A  A  B  B  A  A
+Ряд 4:  B  B  A  A  B  B
+(A и B — разные цвета)</pre>
+        
+        <h4>💡 Лайфхак</h4>
+        <p>Держите два клубка в разных руках — скорость вязания удвоится, а нити не будут путаться.</p>
+    </div>
+</div>
+<script>
+// ===== УНИВЕРСАЛЬНЫЙ КОД ДЛЯ ВСЕХ МОДАЛЬНЫХ ОКОН =====
+
+// Находим все кнопки "Читать", "Смотреть урок", "Подробнее" в карточках уроков
+const readButtons = document.querySelectorAll('.tutorial-card .read-more');
+
+// Назначаем каждую кнопку на своё модальное окно
+if (readButtons.length >= 1) {
+    readButtons[0].addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('modalLesson1').style.display = 'flex';
+    });
+}
+if (readButtons.length >= 2) {
+    readButtons[1].addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('modalLesson2').style.display = 'flex';
+    });
+}
+if (readButtons.length >= 3) {
+    readButtons[2].addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('modalLesson3').style.display = 'flex';
+    });
+}
+if (readButtons.length >= 4) {
+    readButtons[3].addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('modalLesson4').style.display = 'flex';
+    });
+}
+
+// Закрытие по крестику (для всех модальных окон)
+const closeButtons = document.querySelectorAll('.close-modal');
+closeButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal');
+        document.getElementById(modalId).style.display = 'none';
+    });
+});
+
+// Закрытие по клику вне окна
+window.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+    }
+});
 </script>
 </body>
 </html>
